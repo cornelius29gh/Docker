@@ -1,0 +1,37 @@
+
+services:
+  apache-tomcat-webserver1:
+    image: tomcat-image
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - webservers-compose-network
+
+  apache-tomcat-webserver2:
+    image: tomcat-image
+    ports:
+      - "8090:8080"
+    restart: always
+    networks:
+      - webservers-compose-network
+
+  apache-webserver1:
+    image: apache
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - webservers-compose-network
+
+  apache-webserver2:
+    image: apache
+    ports:
+      - "90:80"
+    restart: always
+    networks:
+      - webservers-compose-network
+  
+# Networks to be created to facilitate communication between containers
+networks:
+  webservers-compose-network:
